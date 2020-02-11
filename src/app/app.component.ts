@@ -7,7 +7,6 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-
   @ViewChild('f', {static: true}) signupForm: NgForm;
 
   onSubmit() {
