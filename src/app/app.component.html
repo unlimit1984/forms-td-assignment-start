@@ -25,21 +25,18 @@
             email
             required
             #email="ngModel">
+          <span class="help-block" *ngIf="!email.valid && email.touched">Enter valid email!</span>
         </div>
-        <p style="color: red" *ngIf="!email.valid && email.touched">Enter valid email!</p>
+<!--        <p style="color: red" *ngIf="!email.valid && email.touched">Enter valid email!</p>-->
         <div class="form-group">
           <label for="subscription">Subscription:</label>
           <select
             id="subscription"
             name="subscription"
             class="form-control"
-            [ngModel]="'advanced'"
-            #subscr="ngModel">
-            <option value="basic">Basic</option>
-            <option value="advanced">Advanced</option>
-            <option value="pro">Pro</option>
+            [ngModel]="selectedSubscription">
+            <option *ngFor="let subscr of subscriptions" [value]="subscr">{{ subscr}}</option>
           </select>
-          <p style="color: red" *ngIf="!subscr.valid && subscr.touched">Enter valid subscription!</p>
         </div>
         <div class="form-group">
           <label for="pwd">Password:</label>
@@ -51,10 +48,11 @@
             ngModel
             required
             #pass="ngModel">
+          <span *ngIf="!pass.valid && pass.touched">Enter valid password!</span>
         </div>
-        <p style="color: red" *ngIf="!pass.valid && pass.touched">Enter valid password!</p>
         <hr>
-        <p *ngIf="!signupForm.valid && signupForm.touched">Some fields are invalid!</p>
+<!--        <p *ngIf="!signupForm.valid && signupForm.touched">Some fields are invalid!</p>-->
+        <p *ngIf="!f.valid && f.touched">Some fields are invalid!</p>
         <button
           type="submit"
           class="btn btn-default"
